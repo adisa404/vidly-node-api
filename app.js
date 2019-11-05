@@ -1,8 +1,8 @@
-const logger = require('./logger');
+const log = require('./logger');
 
 console.log('logger.log');
 
-logger('disa');
+log('disa');
 
 //
 function sayHello() {

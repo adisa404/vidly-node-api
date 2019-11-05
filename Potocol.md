@@ -1,6 +1,6 @@
 # vidly-node-api
 
-# node
+## node
 
 - a runtime environment for executing js code outside of the browser
 
@@ -8,7 +8,7 @@
 
 - is single threaded
 
-# node module system
+## node module system
 
 log module object to see the properties
 
@@ -27,3 +27,20 @@ but we can also export like this
 module.exports = log;
 
 now log is accessible as a function
+
+## module wrapper function
+
+every js file iw wraped in a module wrapper function at runtime.
+
+so logger js is wrapped into:
+
+```
+(function (exports, require, module, __filename, __dirname){
+
+})
+
+```
+
+this function is local to every module
+
+sow we can refernce each of the parameteres

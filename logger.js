@@ -1,3 +1,4 @@
+console.log(__dirname);
 const url = 'fake-logger-service.io/log';
 
 function log(message) {
