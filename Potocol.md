@@ -22,3 +22,8 @@ require('./logger')
 
 first log the return value of the require function:
 logger { log: [Function: log] }
+
+but we can also export like this
+module.exports = log;
+
+now log is accessible as a function
