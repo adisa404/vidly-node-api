@@ -9,3 +9,16 @@
 - is single threaded
 
 # node module system
+
+log module object to see the properties
+
+vars and functions are scoped to a module, unless we export it
+and make it available outside of thius module
+
+## load module
+
+use require function
+require('./logger')
+
+first log the return value of the require function:
+logger { log: [Function: log] }
