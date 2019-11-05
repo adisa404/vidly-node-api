@@ -32,12 +32,13 @@ fs.readdir('./', function(err, files) {
 
 // events module
 const EventEmitter = require('events');
-const emitter = new EventEmitter();
+
+const Logger = require('./logger');
+const logger = new Logger();
 
 // register a listener
-emitter.on('messageLogged', function(arg) {
+logger.on('logging', arg => {
   console.log('listener called', arg);
 });
 
-// register an event
-emitter.emit('messageLogged', { id: 1, url: 'http://' });
+logger.log('adisa sending a message');

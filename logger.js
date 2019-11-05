@@ -1,8 +1,11 @@
-console.log(__dirname);
-const url = 'fake-logger-service.io/log';
+const EventEmitter = require('events');
 
-function log(message) {
-  console.log(message);
+class Logger extends EventEmitter {
+  log(message) {
+    console.log(message);
+
+    this.emit('logging', { id: 1, url: 'http://' });
+  }
 }
 
-module.exports = log;
+module.exports = Logger;
