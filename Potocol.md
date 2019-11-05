@@ -50,3 +50,7 @@ sow we can refernce each of the parameteres
 https://nodejs.org/api/path.html
 
 use require('path'), since path is not a file, it will load the built in path module
+
+## os module
+
+https://nodejs.org/api/os.html
