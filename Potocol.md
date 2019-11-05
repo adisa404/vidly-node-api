@@ -53,9 +53,13 @@ use require('path'), since path is not a file, it will load the built in path mo
 
 ## os module
 
+require('os')
+
 https://nodejs.org/api/os.html
 
 ## fs module
+
+require('fs')
 
 https://nodejs.org/api/fs.html
 
@@ -63,3 +67,18 @@ all async methods take functions as their last argument.
 node will call the callback function when that async operation completes
 
 always use async methods.
+
+## events module
+
+require('events') return value is the EventEmitter class
+
+emit meaning - making a noise or produce something. In app we are signaling that an event has happened
+
+if we run node app.js with emitter.emit('messageLogged'); nothing is going to happen
+
+everytime we raise an event we need to register a listener
+old syntax
+.addListener()
+more familiar sintax
+.on(),
+which takes the name of the venet and a callback function

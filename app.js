@@ -29,3 +29,15 @@ fs.readdir('./', function(err, files) {
   if (err) console.log('error', err);
   else console.log('result', files);
 });
+
+// events module
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
+
+// register a listener
+emitter.on('messageLogged', function() {
+  console.log('listener called');
+});
+
+// register an event
+emitter.emit('messageLogged');
