@@ -42,3 +42,16 @@ logger.on('logging', arg => {
 });
 
 logger.log('adisa sending a message');
+
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  if (req.url === '/') {
+    res.write('yellow');
+    res.end();
+  }
+}); // is an event emitter
+
+server.listen(3000);
+
+console.log('Listening on port 3000...');
