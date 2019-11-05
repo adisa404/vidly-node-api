@@ -82,3 +82,5 @@ old syntax
 more familiar sintax
 .on(),
 which takes the name of the venet and a callback function
+
+arg recieve what we passed in emit { id: 1, url: 'http://' }
