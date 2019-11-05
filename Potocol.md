@@ -54,3 +54,12 @@ use require('path'), since path is not a file, it will load the built in path mo
 ## os module
 
 https://nodejs.org/api/os.html
+
+## fs module
+
+https://nodejs.org/api/fs.html
+
+all async methods take functions as their last argument.
+node will call the callback function when that async operation completes
+
+always use async methods.
