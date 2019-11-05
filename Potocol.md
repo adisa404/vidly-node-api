@@ -44,3 +44,9 @@ so logger js is wrapped into:
 this function is local to every module
 
 sow we can refernce each of the parameteres
+
+## path module
+
+https://nodejs.org/api/path.html
+
+use require('path'), since path is not a file, it will load the built in path module

@@ -1,18 +1,4 @@
-const log = require('./logger');
+const path = require('path');
+let pathObj = path.parse(__filename);
 
-console.log('logger.log');
-
-log('disa');
-
-//
-function sayHello() {
-  console.log('yellow');
-}
-
-sayHello();
-
-function logModuleObject() {
-  console.log(module); // global.module
-}
-
-//logModuleObject();
+console.log(pathObj);
