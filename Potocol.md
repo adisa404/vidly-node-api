@@ -88,3 +88,46 @@ arg recieve what we passed in emit { id: 1, url: 'http://' }
 ## http module
 
 https://nodejs.org/api/http.html
+
+# npm
+
+## npm init
+
+to add package.json
+
+require('underscore')
+
+require resolved this string first by assuming this is a
+
+1. core module,
+2. file of folder
+3. node_modules
+
+todos:
+
+- npm init
+- install underscore and mongoose
+- add gitignore file
+
+## versioning
+
+"dependencies": {
+"mongoose": "^5.7.8", // ^caret notation - install this or newer 5.x version
+"underscore": "~1.9.1" // ~tilde notation - install this or newer 1.9.xnpm
+}
+
+## list installed npm version packages
+
+npm list
+
+## listing without depe dependencies
+
+npm list --depth=0
+
+## list outdated versions of all packages
+
+npm outdated
+
+## uninstall a package
+
+npm un mongoose
