@@ -131,3 +131,15 @@ npm outdated
 ## uninstall a package
 
 npm un mongoose
+
+## todos
+
+- install express
+- create index.js and define new routes
+  get('/', (req, res) => )
+- listen on port app.listen(3000);
+- install nodemon for monitoring (we this we don't need to run node index.js everytime). To watch the files we run: nodemon index.js
+
+## set environment variable
+
+in terminal export PATH=5000 // didn't work
