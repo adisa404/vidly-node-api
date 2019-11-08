@@ -143,3 +143,31 @@ npm un mongoose
 ## set environment variable
 
 in terminal export PATH=5000 // didn't work
+
+## validation with joi
+
+const Joi = require('joi'); // pascal case since this returns a class
+
+# joi object when a valid title is sent
+
+```json
+    { error: null,
+    value: { title: 'new course' },
+    then: [Function: then],
+    catch: [Function: catch] }
+```
+
+# joi object when a invalid title is sent
+
+```json
+    { error:
+    { ValidationError: child "title" fails because ["title" is required]......
+    isJoi: true,
+    name: 'ValidationError',
+    details: [ [Object] ],
+    _object: {},
+    annotate: [Function] },
+    value: {},
+    then: [Function: then],
+    catch: [Function: catch] }
+```
