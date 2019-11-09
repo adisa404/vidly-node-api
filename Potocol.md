@@ -226,9 +226,8 @@ Middleware functions
 #### built in
 
 1. route handler function  
-   (req, res) => {
-
-}
+    (req, res) => {
+   }
 
 2. express.json()
    converts a request to a json object, and populates the req.body property
@@ -248,3 +247,57 @@ calls another MWF that it terminates the cylce and the process is not hanging
 helmet middleware - for setting headers
 
 morgan middleware - for logging HTTP requests
+
+### environment variables
+
+app.get() - get method in app can give us a lot of information about the app
+
+if this is not set console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+then app.get('env') is set, and by default it takes this variable
+
+```javascript
+// enable debugging only in development environment
+if (app.get('env') === 'development') {
+  app.use(morgan('tiny'));
+  console.log('morgan enabled');
+}
+``;
+```
+
+### confifuration
+
+most popular package for managing configuration is 'rc'
+very popular - 'config'
+
+todos
+
+- npm i config
+- create fodler config
+- add deafult.json
+- add development.json
+- add production.json
+- add custom-configuration-variables.json (exact name) // we use thus to map the name of env variables
+
+```json
+{
+  "mail": {
+    "password": "app_password" // env variable name
+  }
+}
+```
+
+### debug information
+
+todos:
+
+- npm i debug
+- debug insetad of console.log()
+- require('debug')('namespace_name')
+- export DEBUG=namespace_name
+
+```javascript
+require('debug')('app:startup');
+```
+
+in case of using more namepsaces we set
+export DEBUG=namespace1,namespace2
