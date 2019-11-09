@@ -213,3 +213,38 @@ app.delete(‘/api/courses/:id’, (req, res) => {
 });
 
 ```
+
+### Middelware function
+
+Concept of Middleware in Express
+
+- Middleware function takes a request obj
+  and either the returns a response to the client or passes the control to another middleware function
+
+Middleware functions
+
+#### built in
+
+1. route handler function  
+   (req, res) => {
+
+}
+
+2. express.json()
+   converts a request to a json object, and populates the req.body property
+
+3. express.urlencoded();
+
+4. express.static('public') - static folder
+
+#### custom middleware functions
+
+// the goal of every MWF is to terminate the request response cycle. if one MWF
+calls another MWF that it terminates the cylce and the process is not hanging
+// MWFs are called in sequence
+
+#### third party middleware
+
+helmet middleware - for setting headers
+
+morgan middleware - for logging HTTP requests
