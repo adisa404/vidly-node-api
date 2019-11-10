@@ -299,7 +299,7 @@ todos:
 require('debug')('app:startup');
 ```
 
-in case of using more namepsaces we set
+in case of usifng more namepsaces we set
 export DEBUG=namespace1,namespace2
 
 ### refactoring express app
