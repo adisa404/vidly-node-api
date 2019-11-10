@@ -301,3 +301,15 @@ require('debug')('app:startup');
 
 in case of using more namepsaces we set
 export DEBUG=namespace1,namespace2
+
+### refactoring express app
+
+- put routes for /courses to courses.js
+- not using let app = express(); in e ery file
+- using the Routes method instead. -> express.Router();
+- export router and require in index.js
+
+in index.js
+const courses = require('./courses');
+
+app.use('/api/courses', courses);
