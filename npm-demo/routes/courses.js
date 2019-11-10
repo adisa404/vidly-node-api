@@ -80,4 +80,4 @@ function validateCourse(course) {
   return Joi.validate(course, schema);
 }
 
-modules.exports = router;
+module.exports = router;
