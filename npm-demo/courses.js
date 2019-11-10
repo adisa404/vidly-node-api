@@ -12,12 +12,12 @@ const courses = [
 ];
 
 // GET api/courses
-router.get('/api/courses', (req, res) => {
+router.get('/', (req, res) => {
   res.send(courses);
 });
 
 // GET api/courses/id
-router.get('/api/courses/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const course = courses.find(c => c.id === parseInt(req.params.id));
 
   if (!course)
@@ -26,7 +26,7 @@ router.get('/api/courses/:id', (req, res) => {
 });
 
 // POST /api/courses
-router.post('/api/courses', (req, res) => {
+router.post('/', (req, res) => {
   const { error } = validateCourse(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
@@ -41,7 +41,7 @@ router.post('/api/courses', (req, res) => {
 });
 
 // PUT /api/courses/1
-router.put('/api/courses/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   // find course
   const course = courses.find(c => c.id === parseInt(req.params.id));
   if (!course)
