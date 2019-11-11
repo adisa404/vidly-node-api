@@ -390,4 +390,6 @@ Promise.all([p1,p2]); - Wait for an array of promises for complete
 
 #### async and await
 
-if a func returns a pomise we can use the await keyword ex8
+- if a func returns a pomise we can use the await keyword ex8
+- await is only valid in async function
+- wrap await in async func
