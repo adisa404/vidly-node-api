@@ -393,3 +393,45 @@ Promise.all([p1,p2]); - Wait for an array of promises for complete
 - if a func returns a pomise we can use the await keyword ex8
 - await is only valid in async function
 - wrap await in async func
+
+### mongoose exercises
+
+mongoimport --db mongo-exercises --collection courses --drop --file exercise-data.json --jsonArray
+I will rename this to my db
+--->
+mongoimport --db MongoExercises --collection courses --drop --file exercise-data.json --jsonArray
+
+exercises 1:
+get all the published backed courses,
+sort them by name,
+pick only their name and author,
+and display them
+
+### define schema
+
+```js
+const courseSchema = mongoose.Schema({
+  _id: String,
+  tags: [String],
+  date: { type: Date, default: Date.now },
+  name: String,
+  author: String,
+  isPublished: Boolean,
+  price: Number
+});
+```
+
+### add new course object to db
+
+```js
+const Course = mongoose.model('Courses', courseSchema);
+
+async function createCourse() {
+  const course = new Course({ name: 'adisa' });
+  const result = await course.save();
+}
+
+createCourse();
+```
+
+as long as there is async there will be a promise
