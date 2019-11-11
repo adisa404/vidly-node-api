@@ -1,22 +1,26 @@
 const router = require('express').Router();
+const Joi = require('joi');
 
 const genres = [
-  { id: 1, name: 'Acion' },
+  { id: 1, name: 'Acionx' },
   { id: 2, name: 'Horror' },
   { id: 3, name: 'Romance' }
 ];
 
 // register routes
-router.get('/api/genres', (req, res) => {
+router.get('/', (req, res) => {
   res.send(genres);
 });
 
-router.get('/api/genres/:id', (req, res) => {
-  res.send(genres.find(g => g.id === parseInt(req.body.id)));
+router.get('/:id', (req, res) => {
+  const genre = genres.find(g => g.id === parseInt(req.params.id));
+  if (!genre)
+    return res.status(400).send('genre with the given Id was not found.');
+  res.send(genre);
 });
 
-router.post('api/genres', (req, res) => {
-  const { error } = validateGenre(reg.body);
+router.post('/', (req, res) => {
+  const { error } = validateGenre(req.body);
   if (error) res.status(400).send(error.details[0].message);
 
   const genre = {
@@ -28,11 +32,11 @@ router.post('api/genres', (req, res) => {
   res.send(genre);
 });
 
-app.put('api/genres/:id', (req, res) => {
-  const genre = genres.find(g => g.id === parseInt(req.body.id));
+router.put('/:id', (req, res) => {
+  const genre = genres.find(g => g.id === parseInt(req.params.id));
   if (!genre)
     return res.status(400).send('The genre with the given ID was not found');
-  const { error } = validateGenre(reg.body);
+  const { error } = validateGenre(req.body);
   if (error) res.status(400).send(error.details[0].message);
 
   genre.name = req.body.name;
@@ -40,8 +44,8 @@ app.put('api/genres/:id', (req, res) => {
   res.send(genre);
 });
 
-router.delete('/api/genres/:id', (req, res) => {
-  const genre = genres.find(g => g.id === parseInt(req.body.id));
+router.delete('/:id', (req, res) => {
+  const genre = genres.find(g => g.id === parseInt(req.params.id));
   if (!genre) return res.status(404).send('genre not found');
 
   genres.splice(genres.indexOf(genre), 1);
@@ -52,7 +56,7 @@ router.delete('/api/genres/:id', (req, res) => {
 function validateGenre(genre) {
   // validate
   const schema = {
-    title: Joi.string()
+    name: Joi.string()
       .min(3)
       .required()
   };

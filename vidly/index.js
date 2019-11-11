@@ -1,5 +1,4 @@
 const express = require('express');
-const Joi = require('joi');
 const debug = require('debug')('vidly:startup');
 const morgan = require('morgan');
 const genres = require('./routes/genres');
@@ -16,6 +15,8 @@ if (app.get('env') === 'development') {
   app.use(morgan('tiny'));
   debug('morgan enabled...');
 }
+
+app.use('/api/genres', genres);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => debug(`Listening on port ${port} ...`));
