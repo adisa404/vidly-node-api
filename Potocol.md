@@ -313,3 +313,38 @@ in index.js
 const courses = require('./courses');
 
 app.use('/api/courses', courses);
+
+### Sync and Async Programming
+
+#### Sync
+
+```js
+console.log('Before'); // executes first
+console.log('After'); // exectutes when line above is executed
+```
+
+#### Async
+
+```js
+console.log('Before');
+
+setTimeout(() => {
+  // setTimeout is async by default, when run it schedules a task to run in the future
+  console.log('call to db');
+}, 2000);
+
+console.log('After');
+```
+
+outcome:
+Before
+After
+call to db
+
+js is singlethreaded, so writing async maintanable code is important
+
+### Getting the result of an async operation
+
+1. callbacks
+2. promises
+3. Async/Await
