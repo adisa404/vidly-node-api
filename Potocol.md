@@ -348,3 +348,46 @@ js is singlethreaded, so writing async maintanable code is important
 1. callbacks
 2. promises
 3. Async/Await
+
+#### callbacks
+
+- use callback function to get the result
+
+#### promises
+
+- promise: an object that holds the eventual result of an async operation
+  this obj can be in 3 states
+
+1. pending
+2. fullfilled
+3. rejected
+
+Jedino sto shvatam za ove promises je da nece prije vremena zatraziti value, nego kad se zavrsi async, primjer:
+example5 output
+before
+after
+result 1
+
+promise.then().catch()
+
+### refactoring from callback to promise
+
+- we use resolve function instead of callback function ex. 6
+
+### consuming promisses
+
+- we cannot use this const user = getUser(1);
+- we need to use primise.then()
+
+### settled promises
+
+- we can simulate that a promise is already resolved with Promise.resolve({id:1});
+- this is useful for unit tests (ex7)
+
+### running promises in parallel
+
+Promise.all([p1,p2]); - Wait for an array of promises for complete
+
+#### async and await
+
+if a func returns a pomise we can use the await keyword ex8
