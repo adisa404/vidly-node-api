@@ -1,6 +1,6 @@
 /*
-get all the published backed courses,
-sort them by name,
+get all the published backed and frontend courses,
+sort them by price desc,
 pick only their name and author,
 and display them
 */
@@ -24,9 +24,12 @@ const courseSchema = mongoose.Schema({
 const Course = mongoose.model('Courses', courseSchema);
 
 async function getCourses() {
-  return await Course.find({ isPublished: true, tag: 'backend' }) // find only published courses
-    .sort({ name: 1 }) // sort by name 1 indicates asc, -1 desc
-    .select({ name: 1, author: 1 }); // only get name and author
+  return await Course.find({
+    isPublished: true,
+    tags: { $in: ['frontend', 'backend'] }
+  }) // find only published courses
+    .sort({ price: 1 }) // sort by name 1 indicates asc, -1 desc or // -price
+    .select('name author price'); // only get name and author
 }
 
 async function run() {
