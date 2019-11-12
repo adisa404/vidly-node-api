@@ -2,6 +2,7 @@ const express = require('express');
 const debug = require('debug')('vidly:startup');
 const morgan = require('morgan');
 const genres = require('./routes/genres');
+const mongoose = require('mongoose');
 
 let app = express();
 
@@ -16,6 +17,10 @@ if (app.get('env') === 'development') {
   debug('morgan enabled...');
 }
 
+mongoose
+  .connect('mongodb://localhost:27017/VidlyNode')
+  .then(() => console.log('Connected to MongoDb VidlyNode!'))
+  .catch(err => console.log('Error connectiing to db', err));
 app.use('/api/genres', genres);
 
 const port = process.env.PORT || 3000;
