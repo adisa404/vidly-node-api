@@ -434,4 +434,19 @@ async function createCourse() {
 createCourse();
 ```
 
-as long as there is async there will be a promise
+### updating a document
+
+#### query first:
+
+- find by id
+- modify properties
+- save()
+
+#### update first:
+
+- update the doc in the db directly
+
+* mongo db update operators
+  https://docs.mongodb.com/manual/reference/operator/update/
+
+  instead of Course.Update we can use Course.FindByIdAndUpdate. This will get the doc and update it. But to get the updated doc we need to pass, new: true as the second parameter
