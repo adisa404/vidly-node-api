@@ -471,3 +471,30 @@ in api calls use updateGenre
 
 (Single Responsibility Principle)
 model related stuff into models
+
+### create API for movies
+
+- use genres schema from genre.js
+
+POST
+only with genreId
+
+```json
+{
+  "title": "Hello Movie 3",
+  "genreId": "5dcafc2db663f80f67b9e590",
+  "dailyRentalRate": 2,
+  "numberInStock": 0
+}
+```
+
+PUT
+
+```json
+{
+  "title": "Change First Movie",
+  "genreId": "5dcafc2db663f80f67b9e590",
+  "dailyRentalRate": 2,
+  "numberInStock": 0
+}
+```
