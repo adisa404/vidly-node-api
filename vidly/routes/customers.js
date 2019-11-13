@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const customersSchema = mongoose.Schema({
   name: { type: String, required: true, minlength: 5, maxlength: 50 },
-  isGold: { type: Boolean, required: true },
+  isGold: { type: Boolean, default: false },
   phone: { type: String, minlength: 5, maxlength: 50 }
 });
 
