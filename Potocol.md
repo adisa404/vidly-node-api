@@ -450,3 +450,24 @@ createCourse();
   https://docs.mongodb.com/manual/reference/operator/update/
 
   instead of Course.Update we can use Course.FindByIdAndUpdate. This will get the doc and update it. But to get the updated doc we need to pass, new: true as the second parameter
+
+### validation
+
+- ask for validation - force valication with course.validate()
+- we will use Joi for rest apis, and mongoose validation in saving itd
+
+schema type options
+
+### use mongoose in genres.js
+
+- install mongoose
+  mongoose instance
+  connection string
+  schema
+
+in api calls use updateGenre
+
+### create models
+
+(Single Responsibility Principle)
+model related stuff into models
