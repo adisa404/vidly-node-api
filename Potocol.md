@@ -498,3 +498,20 @@ PUT
   "numberInStock": 0
 }
 ```
+
+### transactions
+
+svaka promjena u db je transakcija
+
+when we have to save two changes into the db, but onme can fail.
+That's why we need transactions, to wrap the procedure into one tranbsaction, that means either the both chanes happen or none. If the first one changed it needs to be rolled back. If we don't wrap it into a transaction we will not be able to roll it back.
+
+In mongodb there are no transactions
+
+for mongodb there is a term `two phased commit`
+
+there is an npm package that simulates a transaction for mongodb `fawn`
+
+### joi-objectid
+
+npm i joi-objectid
