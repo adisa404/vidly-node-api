@@ -515,3 +515,11 @@ there is an npm package that simulates a transaction for mongodb `fawn`
 ### joi-objectid
 
 npm i joi-objectid
+
+### authentication and authorization
+
+- create user model
+- register user
+- hashing passwords
+- authenticating users
+- testing the authentication
