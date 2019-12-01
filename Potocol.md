@@ -520,6 +520,15 @@ npm i joi-objectid
 
 - create user model
 - register user
+
+- use lodash's method pick to only get those props from an object that we need
+
+```javascript
+user = new Users(_.pick(req.body, ['name', 'email', 'password']));
+```
+
+we only pick the props we need, since malicious infos can also be be sent from the client
+
 - hashing passwords
 - authenticating users
 - testing the authentication
