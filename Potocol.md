@@ -530,5 +530,6 @@ user = new Users(_.pick(req.body, ['name', 'email', 'password']));
 we only pick the props we need, since malicious infos can also be be sent from the client
 
 - hashing passwords
+  (with bcrypt)
 - authenticating users
 - testing the authentication

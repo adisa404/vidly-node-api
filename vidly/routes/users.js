@@ -2,6 +2,7 @@ const _ = require('lodash');
 const router = require('express').Router();
 const mongoose = require('mongoose');
 const express = require('express');
+const bcrypt = require('bcrypt');
 const { Users, validate } = require('../models/user');
 
 // register routes
@@ -20,6 +21,10 @@ router.post('/', async (req, res) => {
   // });
 
   user = new Users(_.pick(req.body, ['name', 'email', 'password']));
+  const salt = await bcrypt.genSalt(10);
+  const password = await bcrypt.hash(user.password, salt);
+
+  user.password = password;
 
   await user.save();
 
