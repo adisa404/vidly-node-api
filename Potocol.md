@@ -531,5 +531,13 @@ we only pick the props we need, since malicious infos can also be be sent from t
 
 - hashing passwords
   (with bcrypt)
+
 - authenticating users
+  if (!user) res.status(400).send('Invalid data');
+  // we do not want to send 404, and to give to much info why the validation failed
+
+use bcrypt to compare plain text password with hashed password
+
 - testing the authentication
+
+{"email": "adisatest1@gmail.com", "password": "testingStuff"}
