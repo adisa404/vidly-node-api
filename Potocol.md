@@ -553,7 +553,7 @@ use bcrypt to compare plain text password with hashed password
 
 npm i jsonwebtoken
 
-genererate the token with sign
+genererate the tokesn with sign
 
 - jwt.sign - pass what ever payload we want
 - pass name of token
@@ -570,3 +570,29 @@ npm i config
 use config package to store secrets
 
 create /config folder with default.json
+and custom-environment-variables.json
+
+- set environment variable
+  in terminal
+  export vidly_jwtPrivateKey=xxx // any string
+
+# create feature - if user has regitered, then use is logged in automatically
+
+- return the jwt in the http header of the response // we can return it as a part ot the payload, but that is not clean
+
+- the headers that we define should have a sepcial prefix e.g. 'x-auth'
+
+test in postman: test regitering a user with post:
+POST http://localhost:3000/api/users with:
+
+```json
+{
+  "email": "adisatest11@gmail.com",
+  "password": "testingStuff",
+  "name": "adisa"
+}
+```
+
+in response headers we get the token
+
+then whenever we make the next API call we sent the token
