@@ -8,12 +8,14 @@
 
 - is single threaded
 
+- when we define a variable in app.js it is not added to the global object. The vars are scoped to thge current file. This is different for client-side js in the browser where every var defined on the first level is added to the global scope and available in the window object.
+
 ## node module system
 
 log module object to see the properties
 
 vars and functions are scoped to a module, unless we export it
-and make it available outside of thius module
+and make it available outside of this module
 
 ## load module
 
@@ -29,6 +31,8 @@ module.exports = log;
 now log is accessible as a function
 
 ## module wrapper function
+
+node doesn'r run the code directly, it wraps it into an Immediately-invoked Function Expression (IIFE)
 
 every js file iw wraped in a module wrapper function at runtime.
 
@@ -541,3 +545,21 @@ use bcrypt to compare plain text password with hashed password
 - testing the authentication
 
 {"email": "adisatest1@gmail.com", "password": "testingStuff"}
+
+- authentication response
+  if the user is in the db we want to return the JWT
+
+# generate JWT
+
+npm i jsonwebtoken
+
+genererate the token with sign
+
+- jwt.sign - pass what ever payload we want
+- pass name of token
+
+```js
+jwt.sign({ _id: user._id }, 'jwtPrivateKey');
+```
+
+--> return token

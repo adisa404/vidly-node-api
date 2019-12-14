@@ -2,6 +2,7 @@ const _ = require('lodash');
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 const { Users } = require('../models/user');
 
 // register routes
@@ -20,7 +21,9 @@ router.post('/', async (req, res) => {
   console.log('success', success);
   if (!success) res.status(400).send('Invalid email or password.');
 
-  res.send(true);
+  // create token
+  const token = jwt.sign({ _id: user._id }, 'jwtPrivateKey');
+  res.send(token);
 });
 
 function validate(req) {
