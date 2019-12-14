@@ -563,3 +563,10 @@ jwt.sign({ _id: user._id }, 'jwtPrivateKey');
 ```
 
 --> return token
+
+# store secrets
+
+npm i config
+use config package to store secrets
+
+create /config folder with default.json

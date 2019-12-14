@@ -7,6 +7,13 @@ const movies = require('./routes/movies');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 const mongoose = require('mongoose');
+const config = require('config');
+
+if (!config.get('jwtPrivateKey')) {
+  console.error('FATAL:error jwtPrivateKey is not defined ');
+
+  process.exit(1);
+}
 
 let app = express();
 

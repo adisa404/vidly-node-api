@@ -3,6 +3,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
+const config = require('config');
 const { Users } = require('../models/user');
 
 // register routes
@@ -22,7 +23,7 @@ router.post('/', async (req, res) => {
   if (!success) res.status(400).send('Invalid email or password.');
 
   // create token
-  const token = jwt.sign({ _id: user._id }, 'jwtPrivateKey');
+  const token = jwt.sign({ _id: user._id }, config.get('jwtPrivateKey'));
   res.send(token);
 });
 
