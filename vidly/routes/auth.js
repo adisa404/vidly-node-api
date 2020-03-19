@@ -23,11 +23,11 @@ router.post('/', async (req, res) => {
   if (!success) res.status(400).send('Invalid email or password.');
 
   // create token
-  const token = jwt.sign({ _id: user._id }, config.get('jwtPrivateKey'));
+  const token = user.generateAuthToken();
   res.send(token);
 });
 
-function validate(req) {
+function validate (req) {
   const schema = {
     email: Joi.string()
       .min(5)

@@ -430,7 +430,7 @@ const courseSchema = mongoose.Schema({
 ```js
 const Course = mongoose.model('Courses', courseSchema);
 
-async function createCourse() {
+async function createCourse () {
   const course = new Course({ name: 'adisa' });
   const result = await course.save();
 }
@@ -576,7 +576,13 @@ and custom-environment-variables.json
   in terminal
   export vidly_jwtPrivateKey=xxx // any string
 
-# create feature - if user has regitered, then use is logged in automatically
+  test with localhost:3000/api/auth
+
+# start mongo db with
+
+mongod
+
+# create feature - if user has regitered, then user is logged in automatically, and doesn't have to login manually
 
 - return the jwt in the http header of the response // we can return it as a part ot the payload, but that is not clean
 
@@ -596,3 +602,13 @@ POST http://localhost:3000/api/users with:
 in response headers we get the token
 
 then whenever we make the next API call we sent the token
+
+# extract jwt creation to be in on place
+
+in user.js model we extract the logic
+
+we assign to the user object a method like this
+
+```js
+usersSchema.methods.generateAuthToken = function () {};
+```

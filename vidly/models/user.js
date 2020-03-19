@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const usersSchema = mongoose.Schema({
   name: {
@@ -23,9 +25,14 @@ const usersSchema = mongoose.Schema({
   }
 });
 
+usersSchema.methods.generateAuthToken = function () {
+  const token = jwt.sign({ _id: this._id }, config.get('jwtPrivateKey'));
+  return token;
+};
+
 const Users = mongoose.model('User', usersSchema);
 
-function validateUser(user) {
+function validateUser (user) {
   // validate
   const schema = {
     name: Joi.string()

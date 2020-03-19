@@ -1,8 +1,6 @@
 const _ = require('lodash');
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const config = require('config');
 const { Users, validate } = require('../models/user');
 
 // register routes
@@ -27,7 +25,8 @@ router.post('/', async (req, res) => {
   user.password = password;
   await user.save();
 
-  const token = jwt.sign({ _id: user._id }, config.get('jwtPrivateKey'));
+  // create token
+  const token = user.generateAuthToken();
   res
     .header('x-auth-token', token)
     .send(_.pick(user, ['_id', 'name', 'email']));
