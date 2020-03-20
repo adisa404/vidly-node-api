@@ -430,7 +430,7 @@ const courseSchema = mongoose.Schema({
 ```js
 const Course = mongoose.model('Courses', courseSchema);
 
-async function createCourse () {
+async function createCourse() {
   const course = new Course({ name: 'adisa' });
   const result = await course.save();
 }
@@ -610,5 +610,12 @@ in user.js model we extract the logic
 we assign to the user object a method like this
 
 ```js
-usersSchema.methods.generateAuthToken = function () {};
+usersSchema.methods.generateAuthToken = function() {};
 ```
+
+# setting up a test database
+
+change default.json and test.json to have a db key
+
+run app like this in one line:
+NODE_ENV=test node index.js

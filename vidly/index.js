@@ -28,11 +28,11 @@ if (app.get('env') === 'development') {
   app.use(morgan('tiny'));
   debug('morgan enabled...');
 }
-
+const dbConnectionStrnig = config.get('db');
 mongoose
-  .connect('mongodb://localhost:27017/VidlyNode')
-  .then(() => console.log('Connected to MongoDb VidlyNode!'))
-  .catch(err => console.log('Error connectiing to db', err));
+  .connect(dbConnectionStrnig)
+  .then(() => console.log(`Connected to MongoDb ${dbConnectionStrnig}`))
+  .catch(err => console.log(`Error connectiing to ${dbConnectionStrnig}`, err));
 
 app.use('/api/genres', genres);
 app.use('/api/customers', customers);
