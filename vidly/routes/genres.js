@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Genres, validate } = require('../models/genre');
+const validateObjectId = require('../middleware/validateObjectId');
 
 // register routes
 router.get('/', async (req, res) => {
@@ -7,7 +8,7 @@ router.get('/', async (req, res) => {
   res.send(genres);
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', validateObjectId, async (req, res) => {
   const genre = await Genres.findById(req.params.id);
   if (!genre)
     return res.status(400).send('genre with the given Id was not found.');
