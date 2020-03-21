@@ -28,11 +28,11 @@ if (app.get('env') === 'development') {
   app.use(morgan('tiny'));
   debug('morgan enabled...');
 }
-const dbConnectionStrnig = config.get('db');
+const dbConnectionString = config.get('db');
 mongoose
-  .connect(dbConnectionStrnig)
-  .then(() => console.log(`Connected to MongoDb ${dbConnectionStrnig}`))
-  .catch(err => console.log(`Error connectiing to ${dbConnectionStrnig}`, err));
+  .connect(dbConnectionString)
+  .then(() => console.log(`Connected to MongoDb ${dbConnectionString}`))
+  .catch(err => console.log(`Error connectiing to ${dbConnectionString}`, err));
 
 app.use('/api/genres', genres);
 app.use('/api/customers', customers);
@@ -41,4 +41,6 @@ app.use('/api/users', users);
 app.use('/api/auth', auth);
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => debug(`Listening on port ${port} ...`));
+const server = app.listen(port, () => debug(`Listening on port ${port} ...`));
+
+module.exports = server;

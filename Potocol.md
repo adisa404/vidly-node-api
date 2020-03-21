@@ -619,3 +619,41 @@ change default.json and test.json to have a db key
 
 run app like this in one line:
 NODE_ENV=test node index.js
+
+# test APIs
+
+send request to endpoints using:
+npm i supertest --save-dev
+
+# before and after tests
+
+it is not safe to call define at the begining
+
+```js
+let server = require('../../index.js');
+```
+
+we should close the server after each test,
+because if one test starts
+and uses posr 3000 the other test
+would not be able to use that port
+
+```js
+let server;
+describe('/api/genres', () => {
+  beforeEach(() => {
+    server = require('../../index.js'); //
+  });
+  afterEach(() => {
+    server.close(); //
+  });
+
+  describe('GET /', () => {
+    it('should return all genres', () => {});
+  });
+});
+```
+
+# use supertest
+
+const request = require('supertest');
