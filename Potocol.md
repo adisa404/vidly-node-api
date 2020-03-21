@@ -649,11 +649,31 @@ describe('/api/genres', () => {
   });
 
   describe('GET /', () => {
-    it('should return all genres', () => {});
+    it('should return all genres', async () => {
+      const res = await request(server).get('/api/genres');
+      expect(res.status).toBe(200);
+    });
   });
 });
 ```
 
 # use supertest
 
+```js
 const request = require('supertest');
+```
+
+# populate test db with genres
+
+- we require the Genre model
+- create collection
+
+```js
+await Genres.collection.insertMany([{ name: 'genre1' }, { name: 'genre2' }]);
+```
+
+- delete collection
+
+```js
+await Genres.remove({});
+```
